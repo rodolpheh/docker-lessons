@@ -1,5 +1,13 @@
 services:
     - docker
 
-script:
-    - docker build -t nothing .
+jobs:
+    include:
+        - stage: docker build exercice 1
+            script:
+                - git checkout tags/exercice-1
+                - docker build -t nothing:exercice1 .
+        - stage: docker build exercice 2
+            script:
+                - git checkout tags/exercice-2
+                - docker build -t nothing:exercice2 .
