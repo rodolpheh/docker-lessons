@@ -1,17 +1,18 @@
 services:
     - docker
 
-script:
+before_script:
+    - echo "Logging into Docker Hub"
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-jobs:
+matrix:
     include:
-        - stage: docker build exercice 1
+        - name: "Exercice 1 - Travis"
           script:
             - git checkout tags/exercice-1
             - docker build -t nothing:exercice-1-travis .
             - docker push rodolpheh/docker-lessons:exercice-1-travis
-        - stage: docker build exercice 2
+        - name: "Exercice 2 - Travis"
           script:
             - git checkout tags/exercice-2
             - docker build -t nothing:exercice-2-travis .
