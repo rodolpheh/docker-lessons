@@ -7,11 +7,11 @@ matrix:
           script:
             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
             - git checkout tags/exercice-1
-            - docker build -t nothing:exercice-1-travis .
+            - docker build -t rodolpheh/docker-lessons:exercice-1-travis .
             - docker push rodolpheh/docker-lessons:exercice-1-travis
         - name: "Exercice 2 - Travis"
           script:
             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
             - git checkout tags/exercice-2
-            - docker build -t nothing:exercice-2-travis .
+            - docker build -t rodolpheh/docker-lessons:exercice-2-travis .
             - docker push rodolpheh/docker-lessons:exercice-2-travis
