@@ -1,13 +1,18 @@
 services:
     - docker
 
+script:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
 jobs:
     include:
         - stage: docker build exercice 1
           script:
             - git checkout tags/exercice-1
-            - docker build -t nothing:exercice1 .
+            - docker build -t nothing:exercice-1-travis .
+            - docker push rodolpheh/docker-lessons:exercice-1-travis
         - stage: docker build exercice 2
           script:
             - git checkout tags/exercice-2
-            - docker build -t nothing:exercice2 .
+            - docker build -t nothing:exercice-2-travis .
+            - docker push rodolpheh/docker-lessons:exercice-2-travis
